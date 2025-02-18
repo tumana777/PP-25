@@ -1,0 +1,101 @@
+Company ID,Company Name,Industry,Employees,Company Price (in billions)
+1,Google,Technology,15000,500.6
+2,Apple,Technology,120000,2050.2
+3,Microsoft,Technology,80000,1690.5
+4,Amazon,Technology,300000,1760.8
+5,Facebook,Technology,60000,830.4
+6,IBM,Technology,45000,116.7
+7,Intel,Technology,55000,268.9
+8,Oracle,Technology,135000,186.3
+9,Samsung,Technology,300000,240.1
+10,Sony,Technology,110000,76.5
+11,Dell,Technology,90000,67.8
+12,HP,Technology,120000,29.5
+13,Cisco,Technology,70000,221.6
+14,Qualcomm,Technology,33000,147.9
+15,Adobe,Technology,22000,26.4
+16,NVIDIA,Technology,18000,357.2
+17,Tesla,Automotive,55000,785.6
+18,General Electric,Energy,200000,64.3
+19,Boeing,Aerospace,140000,101.2
+20,Lockheed Martin,Aerospace,110000,105.7
+21,Procter & Gamble,Consumer Goods,98000,309.8
+22,The Coca-Cola Company,Beverages,80000,232.5
+23,Johnson & Johnson,Healthcare,135000,415.2
+24,Goldman Sachs,Finance,40000,98.7
+25,JPMorgan Chase,Finance,256000,302.5
+26,Walmart,Retail,2200000,420.1
+27,Toyota,Automotive,370000,251.8
+28,Volkswagen,Automotive,300000,154.7
+29,Nestle,Food & Beverages,291000,318.6
+30,Siemens,Technology,300000,289.3
+31,General Motors,Automotive,173000,61.4
+32,Ford,Automotive,190000,48.7
+33,BP,Energy,70000,136.2
+34,ExxonMobil,Energy,72000,180.9
+35,Shell,Energy,86000,265.4
+36,Chevron,Energy,48000,154.8
+37,AT&T,Telecommunications,230000,198.8
+38,Verizon,Telecommunications,135000,229.5
+39,T-Mobile,Telecommunications,75000,129.7
+40,Comcast,Telecommunications,190000,208.4
+41,Alphabet Inc. (Google's Parent),Technology,150000,1900.6
+42,Netflix,Entertainment,8700,303.5
+43,IBM,Technology,345000,189.7
+44,Salesforce,Technology,55000,172.8
+45,SAP,Technology,105000,171.2
+46,Booz Allen Hamilton,Consulting,28000,9.8
+47,Lockheed Martin,Aerospace,105000,120.3
+48,Northrop Grumman,Aerospace,90000,61.5
+49,Raytheon Technologies,Aerospace,195000,160.7
+50,SpaceX,Aerospace,9000,76.6
+51,Pfizer,Pharmaceuticals,81000,204.4
+52,Merck & Co.,Pharmaceuticals,71000,201.8
+53,Novartis,Pharmaceuticals,120000,233.2
+54,GlaxoSmithKline,Pharmaceuticals,99500,132.9
+55,Johnson Controls,Technology,100000,50.4
+56,Honeywell,Technology,113000,125.8
+57,DowDuPont,Chemicals,98000,83.4
+58,BASF,Chemicals,117000,83.6
+59,Novo Nordisk,Pharmaceuticals,43000,146.7
+60,LVMH Moët Hennessy Louis Vuitton,Luxury Goods,163000,390.2
+61,Nike,Apparel,76700,214.9
+62,Adidas,Apparel,59000,65.4
+63,Coca-Cola Enterprises,Beverages,62000,48.9
+64,Anheuser-Busch InBev,Beverages,170000,167.4
+65,PepsiCo,Beverages,310000,196.8
+66,Kraft Heinz,Food & Beverages,38000,54.3
+67,Unilever,Consumer Goods,155000,160.2
+68,Colgate-Palmolive,Consumer Goods,34000,66.2
+69,3M,Manufacturing,95000,100.3
+70,Hewlett Packard Enterprise,Technology,60000,20.7
+71,Cognizant,Technology,291500,77.3
+72,Accenture,Technology,624000,193.9
+73,Capgemini,Technology,270000,21.8
+74,Tata Consultancy Services,Technology,469261,169.2
+75,Wipro,Technology,175000,28.6
+76,Infosys,Technology,249204,82.6
+77,HCL Technologies,Technology,168977,44.5
+78,Berkshire Hathaway,Finance,390000,660.4
+79,Berkshire Hathaway Energy,Energy,21938,54.7
+80,Koch Industries,Energy,122000,115.0
+81,Exor,Finance,302562,112.5
+82,KKR & Co. Inc.,Finance,1719,18.8
+83,The Blackstone Group,Finance,2674,88.5
+84,Goldman Sachs BDC,Finance,240,4.0
+85,Carlyle Group,Finance,1700,7.2
+86,Bridgewater Associates,Finance,1450,1.9
+87,Fidelity Investments,Finance,51000,33.6
+88,Charles Schwab,Finance,19700,69.7
+89,JPMorgan Asset Management,Finance,20000,13.6
+90,Vanguard Group,Finance,17500,8.5
+91,BlackRock,Finance,16000,118.6
+92,PIMCO,Finance,2800,1.8
+93,Wellington Management,Finance,11000,6.4
+94,UBS,Finance,72000,53.0
+95,Credit Suisse,Finance,48000,31.4
+96,BNP Paribas,Finance,200000,67.5
+97,Société Générale,Finance,149000,26.7
+98,Deutsche Bank,Finance,87000,15.7
+99,Barclays,Finance,83000,22.5
+100,Royal Bank of Scotland,Finance,68000,22.3
