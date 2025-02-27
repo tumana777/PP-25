@@ -1,0 +1,40 @@
+[
+    {
+        "first_name": "John",
+        "last_name": "Smith",
+        "age": 19,
+        "gender": "male",
+        "grades": [
+            51,
+            65,
+            87
+        ],
+        "lecturer": {
+            "name": "Marta",
+            "email": "test.example.com"
+        },
+        "test": [
+            1,
+            7
+        ]
+    },
+    {
+        "first_name": "Bob",
+        "last_name": "White",
+        "age": 19,
+        "gender": "male",
+        "grades": [
+            51,
+            54,
+            87
+        ],
+        "lecturer": {
+            "name": "Marta",
+            "email": "test.example.com"
+        },
+        "test": [
+            1,
+            7
+        ]
+    }
+]
