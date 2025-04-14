@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home page</title>
+</head>
+<body>
+    <h1 style="color: red">Hello, This is home page</h1>
+    {% for product in products %}
+        <ul style="list-style: none">
+            {% if product.is_active %}
+                <li>{{product.id}}. დასახელება: {{ product.name }}, ფასი: {{ product.price }}, რაოდენობა: {{ product.quantity }}</li>
+            {% endif %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
