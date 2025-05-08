@@ -1,21 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
     <h1>Welcome to home page</h1>
-    <h4>Total Products: {{ total_products }}</h4>
-    <ul>
-        {% for product in products %}
-            <li><a href="{% url 'core:product_detail' product.pk %}">{{ product.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <hr>
-    <a href="{% url 'core:about' %}">About</a>
-</body>
-</html>
+        <h4>Total Products: {{ total_products }}</h4>
+        <ul>
+            {% for product in products %}
+                <li><a style="margin-right: 20px" href="{% url 'core:product_detail' product.pk %}">{{ product.name }}</a><small>Category: {{ product.category.name }}</small></li>
+            {% endfor %}
+        </ul>
+        <hr>
+    <a class="btn btn-primary" href="{% url 'core:add_product' %}">Add New Product</a>
+{% endblock %}
