@@ -7,5 +7,9 @@
     <p>Price: {{ product.price }}</p>
     <small>Category: {{ product.category.name }}</small>
     <hr>
-    <a href="{% url 'core:index' %}">Home Page</a>
+    <a class="btn btn-success mb-3" href="{% url 'core:update_product' product.pk %}">Update</a>
+    <form action="{% url 'core:delete_product' product.pk %}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete</button>
+    </form>
 {% endblock %}
