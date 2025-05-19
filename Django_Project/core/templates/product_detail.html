@@ -2,6 +2,9 @@
 
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
+    {% if product.image %}
+        <img style="width: 200px" src="{{ product.image.url }}" alt="">
+    {% endif %}
     <h3>Product: {{ product.name }}</h3>
     <p>Quantity: {{ product.quantity }}</p>
     <p>Price: {{ product.price }}</p>

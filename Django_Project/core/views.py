@@ -17,6 +17,7 @@ class ProductListView(ListView):
     context_object_name = 'products'
     queryset = Product.objects.all().select_related('category')
     ordering = ['-created_at']
+    paginate_by = 3
 
     # def get_queryset(self):
     #     return Product.objects.all().select_related('category')
@@ -36,7 +37,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     form_class = ProductForm
     template_name = 'add_product.html'
     success_url = reverse_lazy('core:index')
-    login_url = '/admin/login/'
+    login_url = 'user:login'
 
 class ProductUpdateView(UpdateView):
     model = Product

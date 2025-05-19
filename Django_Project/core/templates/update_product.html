@@ -6,7 +6,7 @@
 {% block title %} Update Product {% endblock %}
 
 {% block content %}
-    <form style="max-width: 500px; margin: 0 auto" action="" method="POST">
+    <form class="custom-class" action="" method="POST">
         {% csrf_token %}
         {{ form|crispy }}
         <button class="btn btn-success mb-3">Update</button>
