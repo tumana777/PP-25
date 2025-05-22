@@ -17,7 +17,7 @@ class ProductListView(ListView):
     context_object_name = 'products'
     queryset = Product.objects.all().select_related('category')
     ordering = ['-created_at']
-    paginate_by = 3
+    # paginate_by = 3
 
     # def get_queryset(self):
     #     return Product.objects.all().select_related('category')

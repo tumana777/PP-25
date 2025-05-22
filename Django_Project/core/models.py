@@ -21,6 +21,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     image = models.ImageField(upload_to='product_images/', null=True, blank=True)
+    views = models.PositiveIntegerField(verbose_name="ნახვები", default=0)
 
     objects = BaseManager()
 

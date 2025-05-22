@@ -10,14 +10,14 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "price", "quantity", "get_total_price", "available", "category")
+    list_display = ("name", "price", "quantity", "get_total_price", "available", "category", "views")
     list_display_links = ("name",)
     # list_filter = ("price", "quantity", "available", "category")
     # list_per_page = 3
     list_editable = ("price", "quantity")
     search_fields = ("name",)
     actions = ("change_available_false", "change_available_true")
-    readonly_fields = ("created_at", "updated_at")
+    readonly_fields = ("created_at", "updated_at", "views")
 
     @admin.action(description="Make Not Available")
     def change_available_false(self, request, queryset):
