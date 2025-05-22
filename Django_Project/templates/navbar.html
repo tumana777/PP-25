@@ -18,7 +18,7 @@
                     {{ user }}
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'user:profile' %}">Profile</a></li>
                     <li>
                         <form method="POST" action="{% url 'user:logout' %}">
                             {% csrf_token %}
@@ -37,8 +37,8 @@
             {% endif %}
 
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <form class="d-flex" role="search" action="{% url 'core:index' %}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q }}"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>

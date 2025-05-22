@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 from core.forms import ProductForm
 from core.models import Product
@@ -15,12 +16,19 @@ class ProductListView(ListView):
     model = Product
     template_name = 'index.html'
     context_object_name = 'products'
-    queryset = Product.objects.all().select_related('category')
-    ordering = ['-created_at']
+    # queryset = Product.objects.all().select_related('category')
+    # ordering = ['-created_at']
     # paginate_by = 3
 
-    # def get_queryset(self):
-    #     return Product.objects.all().select_related('category')
+    def get_queryset(self):
+        products = Product.objects.all().select_related('category').order_by('-created_at')
+
+        search_query = self.request.GET.get('q')
+
+        if search_query:
+            products = products.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+
+        return products
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

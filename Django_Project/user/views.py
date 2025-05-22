@@ -1,10 +1,18 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.views import LoginView, LogoutView
-
 from user.forms import UserRegisterForm
+from .models import Profile
 
+class UserProfileView(LoginRequiredMixin, DetailView):
+    model = Profile
+    template_name = 'profile.html'
+    login_url = 'user:login'
+
+    def get_object(self, queryset=None):
+        return self.request.user.profile
 
 class UserRegisterView(CreateView):
     model = User
