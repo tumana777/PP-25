@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 from core.forms import ProductForm
-from core.models import Product
+from core.models import Product, Category
 from django.views.generic import (
     ListView, CreateView, UpdateView,
     DetailView, DeleteView
@@ -24,15 +24,28 @@ class ProductListView(ListView):
         products = Product.objects.all().select_related('category').order_by('-created_at')
 
         search_query = self.request.GET.get('q')
+        category_name = self.request.GET.get('category')
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
 
         if search_query:
             products = products.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+
+        if category_name:
+            products = products.filter(category__name=category_name)
+
+        if min_price:
+            products = products.filter(price__gte=min_price)
+
+        if max_price:
+            products = products.filter(price__lte=max_price)
 
         return products
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['total_products'] = self.get_queryset().count()
+        context['categories'] = Category.objects.all()
         return context
 
 class ProductDetailView(DetailView):

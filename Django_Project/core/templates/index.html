@@ -4,39 +4,65 @@
 
 {% block content %}
     <h1>Welcome to home page</h1>
-        <h4>Total Products: {{ total_products }}</h4>
-        <ul>
-            {% for product in products %}
-                <li><a style="margin-right: 20px" href="{% url 'core:product_detail' product.pk %}">{{ product.name }}</a><small>Category: {{ product.category.name }}</small></li>
-            {% endfor %}
-        </ul>
-        {% if is_paginated %}
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
-                {% else %}
-                    <li class="page-item disabled"><a class="page-link">&laquo; First</a></li>
-                    <li class="page-item disabled"><a class="page-link">Previous</a></li>
-                {% endif %}
-                {% for num in paginator.page_range %}
-                    {% if page_obj.number == num %}
-                        <li class="page-item active"><a class="page-link">{{ num }}</a></li>
-                    {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
-                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+    <div class="row">
+        <div class="col-md-2">
+            <form action="">
+                <select class="form-select" name="category">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <input class="form-control mt-3" type="number" name="min_price" placeholder="Min Price" value="{{ request.GET.min_price }}">
+                <input class="form-control mt-2" type="number" name="max_price" placeholder="Max Price" value="{{ request.GET.max_price }}">
+                <button class="btn btn-primary mt-4">Filter</button>
+            </form>
+        </div>
+        <div class="col-md-10">
+            <h4>Total Products: {{ total_products }}</h4>
+                <div class="row d-flex justify-content-between">
+                    {% for product in products %}
+                        <div class="card p-2 mb-3" style="width: 18rem;">
+                          {% if product.image %}
+                              <img src="{{ product.image.url }}" class="card-img-top" style="height: 250px" alt="...">
+                          {% endif %}
+                          <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="{% url 'core:product_detail' product.pk %}" class="btn btn-primary">More Info</a>
+                          </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% if is_paginated %}
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link">&laquo; First</a></li>
+                        <li class="page-item disabled"><a class="page-link">Previous</a></li>
                     {% endif %}
-                {% endfor %}
-                {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ paginator.num_pages }}">Last &raquo;</a></li>
-                {% else %}
-                    <li class="page-item disabled"><a class="page-link">Next</a></li>
-                    <li class="page-item disabled"><a class="page-link">Last &raquo;</a></li>
-                {% endif %}
-              </ul>
-            </nav>
-        {% endif %}
-        <hr>
+                    {% for num in paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><a class="page-link">{{ num }}</a></li>
+                        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ paginator.num_pages }}">Last &raquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link">Next</a></li>
+                        <li class="page-item disabled"><a class="page-link">Last &raquo;</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
     <a class="btn btn-primary" href="{% url 'core:add_product' %}">Add New Product</a>
 {% endblock %}
