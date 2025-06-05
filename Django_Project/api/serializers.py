@@ -52,3 +52,8 @@ class ProductCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('name', 'price', 'quantity', 'description', 'category', 'image')
+
+class ProductUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        exclude = ('views', )

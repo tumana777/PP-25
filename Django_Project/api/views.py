@@ -1,11 +1,18 @@
 from django.db.models import Count
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
 from core.models import Product, Category
-from .serializers import CategorySerializer, ProductListSerializer, ProductDetailSerializer, ProductCreateSerializer
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from .serializers import (
+    CategorySerializer, ProductListSerializer, ProductDetailSerializer,
+    ProductCreateSerializer, ProductUpdateSerializer
+)
+from rest_framework.generics import (
+    ListAPIView, RetrieveAPIView, CreateAPIView,
+    UpdateAPIView, DestroyAPIView, ListCreateAPIView,
+    RetrieveUpdateDestroyAPIView
+)
 
 # @api_view(['GET', 'POST'])
 # def product_list(request):
@@ -30,7 +37,7 @@ class CategoryListView(ListAPIView):
     serializer_class = CategorySerializer
 
 class ProductListView(ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductListSerializer
 
 class ProductDetailView(RetrieveAPIView):
@@ -41,3 +48,33 @@ class ProductDetailView(RetrieveAPIView):
 
 class ProductCreateView(CreateAPIView):
     serializer_class = ProductCreateSerializer
+
+class ProductUpdateView(UpdateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductUpdateSerializer
+
+class ProductDeleteView(DestroyAPIView):
+    queryset = Product.objects.all()
+
+class ProductListCreateView(ListCreateAPIView):
+    queryset = Product.objects.all().order_by('-created_at')
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return ProductCreateSerializer
+        return ProductListSerializer
+
+    # def get_permissions(self):
+    #     if self.request.method == "POST":
+    #         return [IsAuthenticated()]
+    #     return [AllowAny()]
+
+class ProductRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_serializer_class(self):
+        if self.request.method in ['PUT', 'PATCH']:
+            return ProductUpdateSerializer
+        return ProductDetailSerializer
